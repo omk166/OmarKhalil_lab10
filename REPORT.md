@@ -85,3 +85,11 @@ JUnit test results, coverage XML, and Bandit JSON. The local Jenkins URL can be
 opened on the lab machine; the committed evidence can be reviewed from GitHub.
 Later documentation and evidence commits do not change the tested application,
 tests, requirements, or Jenkinsfile.
+
+## Screenshot proof
+
+The following original screenshot, supplied by Omar Khalil, shows the local
+Jenkins dashboard with a successful `Python-CI-CD` build **#1**, no failed build,
+and a last duration of **1 minute 15 seconds**. The image is included unchanged.
+
+![Jenkins dashboard showing successful Python-CI-CD build #1](evidence/jenkins-dashboard-success.png)
