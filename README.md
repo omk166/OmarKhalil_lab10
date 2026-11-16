@@ -20,7 +20,7 @@ The application prints `Hello, World from Omar Khalil!`.
 5. Set the branch to `*/main` and Script Path to `Jenkinsfile_Omar_Khalil`.
 6. Save and select **Build Now**. All six stages must pass.
 7. Download the test, coverage, Bandit, and deployment artifacts from the build.
-   Add the actual build URL, number, and console output to `REPORT.md`.
+   See `REPORT.md` for the recorded verification results.
 
 The pipeline supports Windows (`bat`) and Linux/macOS (`sh`), using the virtual
 environment's Python directly. Each failed command stops the pipeline before
@@ -41,6 +41,24 @@ Local deployment is the lab's permitted simple local deployment option.
 The deployed file is archived in Jenkins before workspace cleanup; download
 it and run `python app.py` to use it. This CLI application has no server process.
 No remote server or SSH credentials are required.
+
+## Configured local Jenkins instance
+
+The lab machine has a portable Jenkins instance at `http://localhost:8080/`
+with a `Python-CI-CD` job configured to read this GitHub repository.
+Sign in as `omar`, using the password stored locally in
+`.jenkins/local-admin-password.txt`. The password and Jenkins installation
+are excluded from Git. This URL is accessible on the lab machine only.
+
+If Jenkins is stopped, launch it from the lab directory with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .tools\start-jenkins.ps1
+```
+
+The launcher uses a process-only policy override and starts Jenkins in a hidden
+window. The `.tools` and `.jenkins` directories are local installation files;
+a fresh clone should follow the Jenkins setup instructions above instead.
 
 ## Run locally
 

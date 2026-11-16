@@ -52,5 +52,36 @@ Hello, World from Omar Khalil!
 
 ## Jenkins build
 
-Jenkins build verification is in progress. Local results above are actual
-Python command results, rather than Jenkins build output.
+Jenkins **2.580.2**, running with Temurin Java **21.0.13**, executed job
+`Python-CI-CD`, build **#1**, on **16 November 2026**. The build fetched the
+Jenkinsfile and source from GitHub, commit
+`a108f990a3248f2180f4b5f1e7daf45e118552a2`.
+
+- Result: **SUCCESS**
+- Duration: **75.835 seconds**
+- Local build URL: http://localhost:8080/job/Python-CI-CD/1/
+- Stages passed: Setup, Lint, Test, Coverage, Security Scan, Deploy.
+- Tests: **6 passed**, recorded by Jenkins' JUnit publisher.
+- Coverage: **100%** statement and branch coverage for both production files.
+- Bandit: **0 findings**; no scan errors or skipped tests.
+- Deployment: application copied and executed successfully.
+- Reports and deployed app archived before workspace cleanup.
+
+Actual Jenkins output excerpts:
+
+```text
+6 passed in 0.23s
+TOTAL          22      0      4      0   100%
+Hello, World from Omar Khalil!
+Recording test results
+Archiving artifacts
+Finished: SUCCESS
+```
+
+The complete unedited Jenkins console output is saved in
+[`evidence/jenkins-build-1-console.txt`](evidence/jenkins-build-1-console.txt).
+The same directory contains the build metadata from Jenkins' API, the archived
+JUnit test results, coverage XML, and Bandit JSON. The local Jenkins URL can be
+opened on the lab machine; the committed evidence can be reviewed from GitHub.
+Later documentation and evidence commits do not change the tested application,
+tests, requirements, or Jenkinsfile.

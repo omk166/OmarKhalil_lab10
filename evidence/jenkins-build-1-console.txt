@@ -1,0 +1,232 @@
+Started by user omar
+Obtained Jenkinsfile_Omar_Khalil from git https://github.com/omk166/OmarKhalil_lab10.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/omk166/OmarKhalil_lab10.git
+ > git.exe init C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/omk166/OmarKhalil_lab10.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.56.0.windows.2'
+ > git.exe fetch --tags --force --progress -- https://github.com/omk166/OmarKhalil_lab10.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url https://github.com/omk166/OmarKhalil_lab10.git # timeout=10
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision a108f990a3248f2180f4b5f1e7daf45e118552a2 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f a108f990a3248f2180f4b5f1e7daf45e118552a2 # timeout=10
+Commit message: "Implement Omar Khalil Jenkins lab with coverage security and deployment"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2026-11-16T09:18:15.415Z] Timeout set to expire in 15 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:18:16.160Z] 
+[2026-11-16T09:18:16.160Z] C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD>python -m venv .venv 
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:18:36.386Z] Collecting flake8==7.3.0 (from -r requirements.txt (line 1))
+[2026-11-16T09:18:36.386Z]   Using cached flake8-7.3.0-py2.py3-none-any.whl.metadata (3.8 kB)
+[2026-11-16T09:18:36.392Z] Collecting pytest==9.0.2 (from -r requirements.txt (line 2))
+[2026-11-16T09:18:36.392Z]   Using cached pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+[2026-11-16T09:18:36.976Z] Collecting coverage==7.13.1 (from -r requirements.txt (line 3))
+[2026-11-16T09:18:36.976Z]   Using cached coverage-7.13.1-cp313-cp313-win_amd64.whl.metadata (8.7 kB)
+[2026-11-16T09:18:37.265Z] Collecting bandit==1.9.2 (from -r requirements.txt (line 4))
+[2026-11-16T09:18:37.265Z]   Using cached bandit-1.9.2-py3-none-any.whl.metadata (7.1 kB)
+[2026-11-16T09:18:37.536Z] Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.3.0->-r requirements.txt (line 1))
+[2026-11-16T09:18:37.536Z]   Using cached mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+[2026-11-16T09:18:37.841Z] Collecting pycodestyle<2.15.0,>=2.14.0 (from flake8==7.3.0->-r requirements.txt (line 1))
+[2026-11-16T09:18:37.841Z]   Using cached pycodestyle-2.14.0-py2.py3-none-any.whl.metadata (4.5 kB)
+[2026-11-16T09:18:38.301Z] Collecting pyflakes<3.5.0,>=3.4.0 (from flake8==7.3.0->-r requirements.txt (line 1))
+[2026-11-16T09:18:38.301Z]   Using cached pyflakes-3.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
+[2026-11-16T09:18:38.301Z] Collecting colorama>=0.4 (from pytest==9.0.2->-r requirements.txt (line 2))
+[2026-11-16T09:18:38.301Z]   Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+[2026-11-16T09:18:38.686Z] Collecting iniconfig>=1.0.1 (from pytest==9.0.2->-r requirements.txt (line 2))
+[2026-11-16T09:18:38.686Z]   Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+[2026-11-16T09:18:38.959Z] Collecting packaging>=22 (from pytest==9.0.2->-r requirements.txt (line 2))
+[2026-11-16T09:18:38.959Z]   Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+[2026-11-16T09:18:38.959Z] Collecting pluggy<2,>=1.5 (from pytest==9.0.2->-r requirements.txt (line 2))
+[2026-11-16T09:18:38.959Z]   Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+[2026-11-16T09:18:39.564Z] Collecting pygments>=2.7.2 (from pytest==9.0.2->-r requirements.txt (line 2))
+[2026-11-16T09:18:39.564Z]   Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+[2026-11-16T09:18:39.841Z] Collecting PyYAML>=5.3.1 (from bandit==1.9.2->-r requirements.txt (line 4))
+[2026-11-16T09:18:39.841Z]   Using cached pyyaml-6.0.3-cp313-cp313-win_amd64.whl.metadata (2.4 kB)
+[2026-11-16T09:18:39.841Z] Collecting stevedore>=1.20.0 (from bandit==1.9.2->-r requirements.txt (line 4))
+[2026-11-16T09:18:40.119Z]   Using cached stevedore-5.10.0-py3-none-any.whl.metadata (2.3 kB)
+[2026-11-16T09:18:40.400Z] Collecting rich (from bandit==1.9.2->-r requirements.txt (line 4))
+[2026-11-16T09:18:40.400Z]   Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+[2026-11-16T09:18:41.259Z] Collecting markdown-it-py>=2.2.0 (from rich->bandit==1.9.2->-r requirements.txt (line 4))
+[2026-11-16T09:18:41.259Z]   Using cached markdown_it_py-4.3.0-py3-none-any.whl.metadata (7.9 kB)
+[2026-11-16T09:18:41.540Z] Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->bandit==1.9.2->-r requirements.txt (line 4))
+[2026-11-16T09:18:41.540Z]   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+[2026-11-16T09:18:41.540Z] Using cached flake8-7.3.0-py2.py3-none-any.whl (57 kB)
+[2026-11-16T09:18:41.540Z] Using cached pytest-9.0.2-py3-none-any.whl (374 kB)
+[2026-11-16T09:18:41.540Z] Using cached coverage-7.13.1-cp313-cp313-win_amd64.whl (222 kB)
+[2026-11-16T09:18:41.540Z] Using cached bandit-1.9.2-py3-none-any.whl (134 kB)
+[2026-11-16T09:18:41.540Z] Using cached mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+[2026-11-16T09:18:41.540Z] Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+[2026-11-16T09:18:41.540Z] Using cached pycodestyle-2.14.0-py2.py3-none-any.whl (31 kB)
+[2026-11-16T09:18:41.540Z] Using cached pyflakes-3.4.0-py2.py3-none-any.whl (63 kB)
+[2026-11-16T09:18:41.540Z] Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+[2026-11-16T09:18:41.540Z] Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+[2026-11-16T09:18:41.540Z] Using cached packaging-26.3-py3-none-any.whl (129 kB)
+[2026-11-16T09:18:41.540Z] Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+[2026-11-16T09:18:41.540Z] Using cached pyyaml-6.0.3-cp313-cp313-win_amd64.whl (154 kB)
+[2026-11-16T09:18:41.540Z] Using cached stevedore-5.10.0-py3-none-any.whl (56 kB)
+[2026-11-16T09:18:41.540Z] Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+[2026-11-16T09:18:41.540Z] Using cached markdown_it_py-4.3.0-py3-none-any.whl (96 kB)
+[2026-11-16T09:18:41.540Z] Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+[2026-11-16T09:18:42.351Z] Installing collected packages: stevedore, PyYAML, pygments, pyflakes, pycodestyle, pluggy, packaging, mdurl, mccabe, iniconfig, coverage, colorama, pytest, markdown-it-py, flake8, rich, bandit
+[2026-11-16T09:19:04.260Z] 
+[2026-11-16T09:19:04.260Z] Successfully installed PyYAML-6.0.3 bandit-1.9.2 colorama-0.4.6 coverage-7.13.1 flake8-7.3.0 iniconfig-2.3.1 markdown-it-py-4.3.0 mccabe-0.7.0 mdurl-0.1.2 packaging-26.3 pluggy-1.7.0 pycodestyle-2.14.0 pyflakes-3.4.0 pygments-2.21.0 pytest-9.0.2 rich-15.0.0 stevedore-5.10.0
+[2026-11-16T09:19:04.260Z] 
+[2026-11-16T09:19:04.260Z] [notice] A new release of pip is available: 25.2 -> 26.3
+[2026-11-16T09:19:04.260Z] [notice] To update, run: C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD\.venv\Scripts\python.exe -m pip install --upgrade pip
+[Pipeline] isUnix
+[Pipeline] bat
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:07.885Z] ============================= test session starts =============================
+[2026-11-16T09:19:07.885Z] platform win32 -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0 -- C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD\.venv\Scripts\python.exe
+[2026-11-16T09:19:07.885Z] cachedir: .pytest_cache
+[2026-11-16T09:19:07.885Z] rootdir: C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD
+[2026-11-16T09:19:07.885Z] collecting ... collected 6 items
+[2026-11-16T09:19:07.885Z] 
+[2026-11-16T09:19:07.885Z] tests/test_app.py::TestApp::test_greet PASSED                            [ 16%]
+[2026-11-16T09:19:07.885Z] tests/test_app.py::TestApp::test_student_name PASSED                     [ 33%]
+[2026-11-16T09:19:07.885Z] tests/test_app.py::test_main PASSED                                      [ 50%]
+[2026-11-16T09:19:07.885Z] tests/test_app.py::test_script_entry_point PASSED                        [ 66%]
+[2026-11-16T09:19:07.885Z] tests/test_deploy.py::test_deployment_and_redeployment PASSED            [ 83%]
+[2026-11-16T09:19:07.885Z] tests/test_deploy.py::test_deployment_cli PASSED                         [100%]
+[2026-11-16T09:19:07.885Z] 
+[2026-11-16T09:19:07.885Z] - generated xml file: C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD\reports\tests.xml -
+[2026-11-16T09:19:07.885Z] ============================== 6 passed in 0.23s ==============================
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Coverage)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:10.086Z] ============================= test session starts =============================
+[2026-11-16T09:19:10.088Z] platform win32 -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0 -- C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD\.venv\Scripts\python.exe
+[2026-11-16T09:19:10.088Z] cachedir: .pytest_cache
+[2026-11-16T09:19:10.088Z] rootdir: C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD
+[2026-11-16T09:19:10.088Z] collecting ... collected 6 items
+[2026-11-16T09:19:10.088Z] 
+[2026-11-16T09:19:10.088Z] tests/test_app.py::TestApp::test_greet PASSED                            [ 16%]
+[2026-11-16T09:19:10.088Z] tests/test_app.py::TestApp::test_student_name PASSED                     [ 33%]
+[2026-11-16T09:19:10.088Z] tests/test_app.py::test_main PASSED                                      [ 50%]
+[2026-11-16T09:19:10.088Z] tests/test_app.py::test_script_entry_point PASSED                        [ 66%]
+[2026-11-16T09:19:10.088Z] tests/test_deploy.py::test_deployment_and_redeployment PASSED            [ 83%]
+[2026-11-16T09:19:10.088Z] tests/test_deploy.py::test_deployment_cli PASSED                         [100%]
+[2026-11-16T09:19:10.088Z] 
+[2026-11-16T09:19:10.088Z] ============================== 6 passed in 0.17s ==============================
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:11.103Z] Wrote XML report to reports/coverage.xml
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:12.102Z] Wrote HTML report to reports/coverage-html\index.html
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:12.766Z] Name        Stmts   Miss Branch BrPart  Cover   Missing
+[2026-11-16T09:19:12.766Z] -------------------------------------------------------
+[2026-11-16T09:19:12.766Z] app.py          6      0      2      0   100%
+[2026-11-16T09:19:12.766Z] deploy.py      16      0      2      0   100%
+[2026-11-16T09:19:12.766Z] -------------------------------------------------------
+[2026-11-16T09:19:12.766Z] TOTAL          22      0      4      0   100%
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security Scan)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:14.064Z] [main]	INFO	profile include tests: None
+[2026-11-16T09:19:14.064Z] [main]	INFO	profile exclude tests: None
+[2026-11-16T09:19:14.064Z] [main]	INFO	cli include tests: None
+[2026-11-16T09:19:14.064Z] [main]	INFO	cli exclude tests: None
+[2026-11-16T09:19:14.064Z] [json]	INFO	JSON output written to file: reports/bandit.json
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:14.919Z] Deployed application to C:\Users\User\Desktop\Lab 10\.jenkins\workspace\Python-CI-CD\deployment\app.py
+[Pipeline] isUnix
+[Pipeline] bat
+[2026-11-16T09:19:15.275Z] Hello, World from Omar Khalil!
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+[2026-11-16T09:19:15.614Z] Recording test results
+[2026-11-16T09:19:15.802Z] [Checks API] No suitable checks publisher found.
+[Pipeline] archiveArtifacts
+[2026-11-16T09:19:15.832Z] Archiving artifacts
+[Pipeline] deleteDir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
