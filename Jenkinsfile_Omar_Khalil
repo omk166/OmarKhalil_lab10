@@ -1,0 +1,75 @@
+// Configure the Pipeline job's Script Path to Jenkinsfile_Omar_Khalil.
+def runPython(String arguments) {
+    if (isUnix()) {
+        sh "\".venv/bin/python\" ${arguments}"
+    } else {
+        bat "@\".venv\\Scripts\\python.exe\" ${arguments}"
+    }
+}
+
+pipeline {
+    agent any
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+        timeout(time: 15, unit: 'MINUTES')
+    }
+    stages {
+        stage('Setup') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'python3 -m venv .venv'
+                    } else {
+                        bat 'python -m venv .venv'
+                    }
+                    runPython('-m pip install -r requirements.txt')
+                    runPython('-c "from pathlib import Path; Path(\'reports\').mkdir(exist_ok=True)"')
+                }
+            }
+        }
+        stage('Lint') {
+            steps {
+                script { runPython('-m flake8 app.py deploy.py tests') }
+            }
+        }
+        stage('Test') {
+            steps {
+                script { runPython('-m pytest -v --junitxml=reports/tests.xml') }
+            }
+        }
+        stage('Coverage') {
+            steps {
+                script {
+                    runPython('-m coverage run -m pytest -v')
+                    runPython('-m coverage xml -o reports/coverage.xml')
+                    runPython('-m coverage html -d reports/coverage-html')
+                    runPython('-m coverage report')
+                }
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                script {
+                    runPython('-m bandit app.py deploy.py -f json -o reports/bandit.json')
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    // A real local deployment, retained as a downloadable artifact.
+                    runPython('deploy.py --target deployment')
+                    runPython('deployment/app.py')
+                }
+            }
+        }
+    }
+    post {
+        always {
+            junit testResults: 'reports/tests.xml', allowEmptyResults: true
+            archiveArtifacts artifacts: 'reports/**,deployment/app.py', allowEmptyArchive: true
+            deleteDir()
+        }
+    }
+}
